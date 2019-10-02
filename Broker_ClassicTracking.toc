@@ -1,0 +1,17 @@
+## Interface: 11302
+## Version: @project-version@
+## X-Date: @project-date-iso@
+## X-Website: https://www.wowace.com/projects/broker-classictracking
+## X-License: MIT License
+## X-Category: Data-Broker
+
+## Title: Broker: ClassicTracking
+## Notes: Simple minimap tracking display with tracking selection in its tooltip.
+## Author: Timmeh
+## OptionalDeps: LibStub, Ace3, LibPubSub-1.0, LibQTip-1.0
+
+embeds.xml
+
+core.lua
+modules\databroker.lua
+modules\tooltip.lua

@@ -1,0 +1,33 @@
+# vim:filetype=yaml:expandtab:tabstop=4:shiftwidth=4:
+
+package-as:
+    Broker_ClassicTracking
+
+enable-nolib-creation:
+    no
+
+externals:
+    lib/LibStub:
+        https://repos.wowace.com/wow/libstub/trunk
+
+    lib/CallbackHandler-1.0:
+        https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
+
+    lib/AceAddon-3.0:
+        https://repos.wowace.com/wow/ace3/trunk/AceAddon-3.0
+
+    lib/AceEvent-3.0:
+        https://repos.wowace.com/wow/ace3/trunk/AceEvent-3.0
+
+    lib/LibPubSub-1.0:
+        https://github.com/timwienk/wow-libpubsub-1-0
+
+    lib/LibQTip-1.0:
+        https://repos.wowace.com/wow/libqtip-1-0/trunk
+
+tools-used:
+    - libdatabroker-1-1
+    - stat-block-core
+
+ignore:
+    - README.md
