@@ -40,18 +40,7 @@ end
 
 function addon:OnUnitAura(event, unit)
 	if unit == 'player' then
-		local tracking = self:GetTracking()
-		if tracking == nil then
-			-- Wait a second in case this even fired because we're dead, event order is unpredictable
-			After(1, function()
-				local tracking = self:GetTracking()
-				if self.tracking ~= tracking then
-					self:TriggerTrackingChanged()
-				end
-			end)
-		elseif self.tracking ~= tracking then
-			self:TriggerTrackingChanged()
-		end
+		self:CheckTracking()
 	end
 end
 
@@ -60,6 +49,21 @@ function addon:OnPlayerResurrect()
 		local tracking = self.tracking
 		self.tracking = nil
 		self:SetTracking(tracking)
+	end
+end
+
+function addon:CheckTracking()
+	local tracking = self:GetTracking()
+	if tracking == nil then
+		-- Wait a second in case we're (supposed to be) dead, event order is unpredictable
+		After(1, function()
+			local tracking = self:GetTracking()
+			if self.tracking ~= tracking then
+				self:TriggerTrackingChanged()
+			end
+		end)
+	elseif self.tracking ~= tracking then
+		self:TriggerTrackingChanged()
 	end
 end
 
@@ -107,7 +111,7 @@ function addon:UpdateSpells()
 		end
 	end
 
-	self:TriggerTrackingChanged()
+	self:CheckTracking()
 end
 
 function addon:GetSpells()
